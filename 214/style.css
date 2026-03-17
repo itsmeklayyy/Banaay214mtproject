@@ -1,78 +1,208 @@
-/* FIXED CSS Zen Garden (errors removed: image paths) */
-
-/* Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Julius+Sans+One|Libre+Baskerville:400,400italic");
 
-/* base CSS */
+/* RESET */
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
+/* BODY (FIXED READABILITY) */
 body {
-  color: #325050;
-  background: #fff;
   font-family: "Libre Baskerville", sans-serif;
-  font-size: 70%;
+  font-size: 100%;
+  line-height: 1.8;
+  color: #1a2e2e;
+  background: #ffffff;
 }
 
+/* LINKS */
 a {
-  color: #0d8ba1;
+  color: #0077cc;
+  font-weight: bold;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 a:hover {
+  color: #ff6600;
   text-decoration: underline;
 }
 
-/* HEADER FIX */
+/* HEADER WITH OVERLAY */
 header {
-  height: 230px;
-  padding: 20px 0 70px 0;
+  position: relative;
+  height: 250px;
+  padding: 20px;
+  text-align: center;
   background-image:
     url("contours.png"), url("noise.png"), url("gridlines.png"),
-    url("design 2.jpeg"); /* FIXED */
+    url("design2.jpeg");
   background-repeat: repeat, repeat, repeat, no-repeat;
   background-size: auto, auto, auto, cover;
-  text-align: center;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* TEXT ABOVE OVERLAY */
+header h1,
+header h2 {
+  position: relative;
+  z-index: 2;
 }
 
 /* HEADINGS */
 h1 {
-  color: white;
   font-family: "Julius Sans One", sans-serif;
+  font-size: 3.5em;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  transition: all 0.2s ease;
 }
 
 h2 {
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.8em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease;
 }
 
-/* CONTENT */
+h3 {
+  font-size: 1.5em;
+  color: #2e484c;
+  transition: all 0.2s ease;
+}
+
+/* TEXT */
+p {
+  font-size: 1.1em;
+  line-height: 1.9;
+  color: #094519;
+  transition: all 0.2s ease; /* smooth highlight effect */
+}
+
+/* Highlight when tapped/clicked */
+p:active {
+  background-color: rgba(255, 255, 0, 0.4); /* soft yellow highlight */
+  color: #000000;
+  border-radius: 3px;
+}
+
+/* Optional: keyboard focus */
+p:focus {
+  outline: none;
+  background-color: rgba(255, 255, 0, 0.4);
+  color: #000000;
+}
+
+/* CONTENT SECTIONS */
 .summary,
-.preamble {
+.preamble,
+.supporting {
   width: 80%;
-  margin: auto;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/* 🔥 FIXED SECTION (was error) */
+/* PARTICIPATION & BENEFITS */
+.participation,
+.benefits {
+  position: relative; /* allow overlay positioning */
+  background-image:
+    url("contours.png"), url("gridlines.png"), url("design3.jpeg");
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
+  padding: 2em;
+  color: #ffffff;
+}
+
+.participation::before,
+.benefits::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay to enhance readability */
+  z-index: 1;
+}
+
+.participation > *,
+.benefits > * {
+  position: relative;
+  z-index: 2; /* text above overlay */
+}
+
+.participation h3,
+.benefits h3 {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: #edf4f0;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* RESOURCES */
 .zen-resources {
-  overflow: hidden;
-  background-color: rgba(138, 188, 159, 0.5);
-  background-image: url("design 3.jpeg"); /* FIXED */
+  position: relative;
+  background-color: rgba(138, 188, 159, 0.6);
+  background-image: url("design3.jpeg");
+  background-size: cover;
+  padding: 20px;
+  color: white;
 }
 
-/* 🔥 FIXED FOOTER BACKGROUND */
+.zen-resources::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* subtle dark overlay */
+  z-index: 1;
+}
+
+.zen-resources > * {
+  position: relative;
+  z-index: 2; /* text above overlay */
+}
+
+.zen-resources h3 {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* FOOTER SECTION */
 .requirements p:last-child {
   background-image:
     url("contours.png"), url("gridlines.png"), url("noise.png"),
-    url("design 1.jpeg"); /* FIXED */
+    url("design1.jpeg");
   background-size: auto, auto, auto, cover;
   color: white;
   text-align: center;
+  padding: 2em;
+  font-size: 1.3em;
 }
 
 /* FOOTER */
@@ -80,5 +210,19 @@ footer {
   background: #134347;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 25px;
+}
+
+/* OPTIONAL: highlight for headings and links */
+h1:active,
+h2:active,
+h3:active,
+h1:focus,
+h2:focus,
+h3:focus,
+a:active,
+a:focus {
+  background-color: rgba(255, 255, 0, 0.3);
+  color: #000000;
+  border-radius: 3px;
 }
