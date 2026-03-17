@@ -478,7 +478,7 @@ li.viewall a {
 .zen-resources {
   overflow: hidden;
   background-color: rgba(138, 188, 159, 0.5);
-  background-image: url(design 3.jpeg);
+  background-image: url(design\ 3.jpeg);
 }
 .zen-resources li {
   border-top: solid 1px #a0b9ad;
